@@ -1,0 +1,8 @@
+local client = game:GetService("RbxAnalyticsService"):GetClientId();
+local whitelist = {"4FC58FD3-9940-4F8E-9310-F8D75B92DEA2", "956DB32F-CF94-4DCE-8CEF-88781A506EB7", "add another"}
+
+for i, v in ipairs(whitelist) do 
+  if v == client then 
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/1o1z/UnknownSourceLeakedSource/main/a"))()
+  end
+end

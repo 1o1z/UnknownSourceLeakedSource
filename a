@@ -1,0 +1,79 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Pop It Dupe", "Synapse")
+local DupeTab = Window:NewTab("Dupe")
+local AutoTab = Window:NewTab("Auto")
+local AutoSection = AutoTab:NewSection("Auto Drop/Buy")
+local DupeSection = DupeTab:NewSection("Dupe")
+DupeSection:NewButton("Dupe Normal(hold item)", "hold item", function()
+    for _, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+       if v:IsA("Tool") then
+local args = {
+    [1] = v.Name,
+    [2] = 6,
+    [3] = "Normal"
+}
+
+game:GetService("ReplicatedStorage").Functions.Upgrade.UpgradeRF:InvokeServer(unpack(args))
+      end
+    end
+end)
+DupeSection:NewButton("Colored Dupe(need 6 of colored item)", "hold item", function()
+   for _, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+     if v:IsA("Tool") then
+local args = {
+    [1] = v.Name,
+    [2] = 6,
+    [3] = "Colored"
+}
+
+game:GetService("ReplicatedStorage").Functions.Upgrade.UpgradeRF:InvokeServer(unpack(args))
+      end
+    end
+end)
+DupeSection:NewButton("Make Golden need 6", "", function()
+       for _, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+     if v:IsA("Tool") then
+local args = {
+    [1] = v.Name,
+    [2] = 6,
+    [3] = "Golden"
+}
+
+game:GetService("ReplicatedStorage").Functions.Upgrade.UpgradeRF:InvokeServer(unpack(args))
+      end
+    end
+end)
+DupeSection:NewButton("Make Rainbow need 6", "", function()
+       for _, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+     if v:IsA("Tool") then
+local args = {
+    [1] = v.Name,
+    [2] = 6,
+    [3] = "Rainbow"
+}
+
+game:GetService("ReplicatedStorage").Functions.Upgrade.UpgradeRF:InvokeServer(unpack(args))
+      end
+    end
+end)
+AutoSection:NewToggle("Auto Buy", "hold item to buy", function(state)
+    if state then
+          _G.AutoBuyItems = true
+        while   _G.AutoBuyItems == true do
+            wait()
+    for _, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+     if v:IsA("Tool") then
+         local args = {
+    [1] = "purchase",
+    [2] = v.Name,
+    [3] = 1
+}
+
+game:GetService("ReplicatedStorage").Events.Coin.CoinMarketRE:FireServer(unpack(args))
+        end
+    end
+    end
+    else
+        _G.AutoBuyItems = false
+    end
+end)
